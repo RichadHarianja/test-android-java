@@ -1,11 +1,10 @@
-package Utilities;
+package utilities;
 
 /*import static org.junit.Assert.assertTrue;*/
 
 import java.io.File;
 import java.io.IOException;
 import java.net.ServerSocket;
-import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.remote.DesiredCapabilities;

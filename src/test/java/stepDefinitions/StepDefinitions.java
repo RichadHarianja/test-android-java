@@ -1,22 +1,25 @@
 package stepDefinitions;
 
 /*import org.openqa.selenium.By;*/
-import Utilities.AppiumServer;
+import utilities.AppiumServer;
 /*import io.appium.java_client.AppiumDriver;*/
+import utilities.Utility;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.MobileElement;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
-import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import io.cucumber.java.en.Then;
+import pages.Login;
 
 public class StepDefinitions {
 
 	AppiumServer appiumServer = new AppiumServer();
 	/* AppiumDriver<MobileElement> driver; */
 	AndroidDriver<MobileElement> driver;
+
+	private Utility utility;
+	private Login loginPages;
 
 	@Before("@setup")
 	public void setUp() throws Throwable {
@@ -34,6 +37,8 @@ public class StepDefinitions {
 		}
 
 		driver = appiumServer.startServer();
+		utility = new Utility(driver);
+		loginPages = new Login(driver);
 	}
 
 	@After("@destroy")
@@ -43,14 +48,11 @@ public class StepDefinitions {
 	}
 
 	@Given("^I log into the app$")
-	public void logIn() throws InterruptedException{
-//			driver.findElementByXPath("//*[text(), 'Ask mom for help']").click();
-//			Thread.sleep(10000);
-//			driver.findElementByXPath("//*[text(), 'Example@address.com']").click();
-//			driver.findElementByXPath("//*[text(), 'Example@address.com']").setValue("richad@nobi.com");
+	public void logIn(){
+	}
 
-		/*driver.findElement(By.id("com.aa.android.qa:id/username")).setValue("5X78V88");*/
-		/*driver.findElement(By.id("com.aa.android.qa:id/lastname")).setValue("Points");*/
-		/*driver.findElement(By.id("com.aa.android.qa:id/password")).setValue("testing");*/
+	@Then("^I want to filled the \"(.*)\" field$")
+	public void filledEmailField(String email){
+		loginPages.fieldEmail.sendKeys("email@gmail.com");
 	}
 }
