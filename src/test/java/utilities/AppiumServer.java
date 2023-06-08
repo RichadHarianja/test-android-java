@@ -5,6 +5,7 @@ package utilities;
 import java.io.File;
 import java.io.IOException;
 import java.net.ServerSocket;
+import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -25,7 +26,7 @@ public class AppiumServer {
 	/* AppiumDriver<MobileElement> driver; */
 	AndroidDriver<MobileElement> driver;
 	File root = new File(System.getProperty("user.dir"));
-	File app = new File(root, "/src/test/api/app-qa.apk");
+	File app = new File(root, "src/test/api/app-staging-debug.apk");
 
 	public AndroidDriver<MobileElement> startServer() throws Exception {
 
@@ -36,7 +37,7 @@ public class AppiumServer {
 		dc.setCapability("BROWSER_NAME", "Android");
 		dc.setCapability(MobileCapabilityType.PLATFORM_NAME, Platform.ANDROID);
 		dc.setCapability("platformName", "Android");
-		dc.setCapability("deviceName", "Android10");
+		dc.setCapability("deviceName", "emulator-5554");
 		dc.setCapability("app", app.getAbsolutePath());
 		// Appium Capabilities
 		cap = new DesiredCapabilities();
@@ -44,8 +45,8 @@ public class AppiumServer {
 
 		// Build the Appium Service
 		builder = new AppiumServiceBuilder();
-		builder.usingDriverExecutable(new File("/usr/local/bin/node"));
-		builder.withAppiumJS(new File("/Applications/Appium.app/Contents/Resources/app/node_modules/appium/build/lib/main.js"));
+		builder.usingDriverExecutable(new File("C:\\Program Files\\nodejs\\node.exe"));
+		builder.withAppiumJS(new File("C:\\Program Files\\Appium\\resources\\app\\node_modules\\appium\\build\\lib\\main.js"));
 		builder.withIPAddress("0.0.0.0");
 		builder.usingPort(4723);
 		builder.withCapabilities(cap);

@@ -9,8 +9,8 @@ import org.junit.runner.RunWith;
 		monochrome = true,
 		plugin = {
 				"pretty",
-				"html:/Users/richadharianja/PRIVATE/Project/Automation/android-java-appium-cucumber/report/report.html",
-				"json:/Users/richadharianja/PRIVATE/Project/Automation/android-java-appium-cucumber/report/cucumber-report.json"
+				"html:/report/report.html",
+				"json:/report/cucumber-report.json"
 		},
 		features = {"src/test/resources" },
 		glue = "stepDefinitions",
